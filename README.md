@@ -1,10 +1,10 @@
 ## Cake.PathTildeHelper
 
-[Cake](https://cakebuild.net/) add-in to provide aliases to help translate tilde (~) characters to absolute paths usable in locations requiring a full path.
+[Cake](https://cakebuild.net/) add-in to provide aliases to help translate tilde (`~`) characters to absolute paths usable in locations requiring a full path.
 
 ### When do I use it?
 
-Most of the Cake path systems don't seem to handle the tilde (~) character. They typically make them a path relative to the working directory with the name of `~`. If you ever want to provide input paths to a Cake script that have a leading tilde (~) in them, such as `~/Projects/my-cool-file.txt` or `~/Documents`, these helpers will translate those values to an absolute path that other Cake aliases and add-ins will be able to handle.
+Most of the Cake path systems don't seem to handle the tilde (`~`) character. They typically make them a path relative to the working directory with the name of `~`. If you ever want to provide input paths to a Cake script that have a leading tilde (`~`) in them, such as `~/Projects/my-cool-file.txt` or `~/Documents`, these helpers will translate those values to an absolute path that other Cake aliases and add-ins will be able to handle.
 
 ### How do I use it?
 
