@@ -7,7 +7,7 @@
     <Copyright>© 2018 Adam Patridge</Copyright>
     <PackageLicenseUrl>https://github.com/patridge/Cake.PathTildeHelper/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/patridge/Cake.PathTildeHelper</PackageProjectUrl>
-    <PackageIconUrl>https://rawgithub.com/cake-contrib/graphics/master/svg/cake-contrib.svg</PackageIconUrl>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
     <PackageTags>Cake Script Build</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
