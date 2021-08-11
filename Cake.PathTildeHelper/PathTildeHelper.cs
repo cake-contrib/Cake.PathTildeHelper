@@ -15,9 +15,9 @@ namespace Cake.PathTildeHelper
         /// <summary>
         /// Creates a path string with any leading tilde (~) character, used to denote the current user path, replaced with the absolute path to the current user's directory.
         /// </summary>
-        /// <returns>If the <paramref name="path"/> contains a leading tilde character (~), returns an new string with the absolute path to the same location (user path replacing the tilde). If the <paramref name="path"/> doesn't contain a tilde, a copy of the original string is returned.</returns>
+        /// <returns>If the <paramref name="filePath"/> contains a leading tilde character (~), returns an new string with the absolute path to the same location (user path replacing the tilde). If the <paramref name="filePath"/> doesn't contain a tilde, a copy of the original string is returned.</returns>
         /// <param name="context">The context.</param>
-        /// <param name="path">Path potentially containing a leading tilde character (~) to denote a path relative to the current user's directory.</param>
+        /// <param name="filePath">Path potentially containing a leading tilde character (~) to denote a path relative to the current user's directory.</param>
         [CakeMethodAlias]
         public static FilePath PathReplaceTilde(this ICakeContext context, FilePath filePath)
         {
@@ -44,9 +44,9 @@ namespace Cake.PathTildeHelper
         /// <summary>
         /// Creates a path string with any leading tilde (~) character, used to denote the current user path, replaced with the absolute path to the current user's directory.
         /// </summary>
-        /// <returns>If the <paramref name="path"/> contains a leading tilde character (~), returns an new string with the absolute path to the same location (user path replacing the tilde). If the <paramref name="path"/> doesn't contain a tilde, a copy of the original string is returned.</returns>
+        /// <returns>If the <paramref name="directoryPath"/> contains a leading tilde character (~), returns an new string with the absolute path to the same location (user path replacing the tilde). If the <paramref name="directoryPath"/> doesn't contain a tilde, a copy of the original string is returned.</returns>
         /// <param name="context">The context.</param>
-        /// <param name="path">Path potentially containing a leading tilde character (~) to denote a path relative to the current user's directory.</param>
+        /// <param name="directoryPath">Path potentially containing a leading tilde character (~) to denote a path relative to the current user's directory.</param>
         [CakeMethodAlias]
         public static DirectoryPath PathReplaceTilde(this ICakeContext context, DirectoryPath directoryPath)
         {
