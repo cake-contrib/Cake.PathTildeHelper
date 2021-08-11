@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net5.0;netstandard2.0</TargetFrameworks>
     <Authors>patridge;augustoproiete</Authors>
     <Description>Cake add-in to provide aliases to help translate leading tilde (~) characters to absolute paths usable in locations requiring a full path.</Description>
     <Copyright>Copyright 2018-2021 Cake Contributors - Provided under the MIT License</Copyright>
@@ -16,8 +16,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cake.Common" Version="0.33.0" PrivateAssets="All" />
-    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Common" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Cake.Core" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
