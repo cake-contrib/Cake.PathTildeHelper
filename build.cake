@@ -1,5 +1,5 @@
-#addin "nuget:?package=Cake.MinVer&version=1.0.1"
-#addin "nuget:?package=Cake.Args&version=1.0.1"
+#addin "nuget:?package=Cake.MinVer&version=2.0.0"
+#addin "nuget:?package=Cake.Args&version=2.0.0"
 
 var target       = ArgumentOrDefault<string>("target") ?? "pack";
 var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("preview"));
@@ -7,7 +7,7 @@ var buildVersion = MinVer(s => s.WithTagPrefix("v").WithDefaultPreReleasePhase("
 Task("clean")
     .Does(() =>
 {
-    CleanDirectories("./artifacts/**");
+    CleanDirectories("./artifact/**");
     CleanDirectories("./**/^{bin,obj}");
 });
 
@@ -15,7 +15,7 @@ Task("restore")
     .IsDependentOn("clean")
     .Does(() =>
 {
-    DotNetCoreRestore("./Cake.PathTildeHelper.sln", new DotNetCoreRestoreSettings
+    DotNetRestore("./Cake.PathTildeHelper.sln", new DotNetRestoreSettings
     {
         LockedMode = true,
     });
@@ -25,16 +25,18 @@ Task("build")
     .IsDependentOn("restore")
     .DoesForEach(new[] { "Debug", "Release" }, (configuration) =>
 {
-    DotNetCoreBuild("./Cake.PathTildeHelper.sln", new DotNetCoreBuildSettings
+    DotNetBuild("./Cake.PathTildeHelper.sln", new DotNetBuildSettings
     {
         Configuration = configuration,
         NoRestore = true,
         NoIncremental = false,
-        MSBuildSettings = new DotNetCoreMSBuildSettings()
-            .WithProperty("Version", buildVersion.Version)
-            .WithProperty("AssemblyVersion", buildVersion.AssemblyVersion)
-            .WithProperty("FileVersion", buildVersion.FileVersion)
-            .WithProperty("ContinuousIntegrationBuild", BuildSystem.IsLocalBuild ? "false" : "true")
+        MSBuildSettings = new DotNetMSBuildSettings
+        {
+            Version = buildVersion.Version,
+            AssemblyVersion = buildVersion.AssemblyVersion,
+            FileVersion = buildVersion.FileVersion,
+            ContinuousIntegrationBuild = BuildSystem.IsLocalBuild,
+        },
     });
 });
 
@@ -42,7 +44,7 @@ Task("test")
     .IsDependentOn("build")
     .Does(() =>
 {
-    var settings = new DotNetCoreTestSettings
+    var settings = new DotNetTestSettings
     {
         Configuration = "Release",
         NoRestore = true,
@@ -52,7 +54,7 @@ Task("test")
     var projectFiles = GetFiles("./Cake.PathTildeHelper.Tests/**/*.csproj");
     foreach (var file in projectFiles)
     {
-        DotNetCoreTest(file.FullPath, settings);
+        DotNetTest(file.FullPath, settings);
     }
 });
 
@@ -62,15 +64,17 @@ Task("pack")
 {
     var releaseNotes = $"https://github.com/cake-contrib/Cake.PathTildeHelper/releases/tag/v{buildVersion.Version}";
 
-    DotNetCorePack("./Cake.PathTildeHelper/Cake.PathTildeHelper.csproj", new DotNetCorePackSettings
+    DotNetPack("./Cake.PathTildeHelper/Cake.PathTildeHelper.csproj", new DotNetPackSettings
     {
         Configuration = "Release",
         NoRestore = true,
         NoBuild = true,
-        OutputDirectory = "./artifacts/nuget",
-        MSBuildSettings = new DotNetCoreMSBuildSettings()
-            .WithProperty("Version", buildVersion.Version)
-            .WithProperty("PackageReleaseNotes", releaseNotes)
+        OutputDirectory = "./artifact/nuget",
+        MSBuildSettings = new DotNetMSBuildSettings
+        {
+            Version = buildVersion.Version,
+            PackageReleaseNotes = releaseNotes,
+        },
     });
 });
 
@@ -92,15 +96,15 @@ Task("push")
         return;
     }
 
-    var nugetPushSettings = new DotNetCoreNuGetPushSettings
+    var nugetPushSettings = new DotNetNuGetPushSettings
     {
         Source = url,
         ApiKey = apiKey,
     };
 
-    foreach (var nugetPackageFile in GetFiles("./artifacts/nuget/*.nupkg"))
+    foreach (var nugetPackageFile in GetFiles("./artifact/nuget/*.nupkg"))
     {
-        DotNetCoreNuGetPush(nugetPackageFile.FullPath, nugetPushSettings);
+        DotNetNuGetPush(nugetPackageFile.FullPath, nugetPushSettings);
     }
 });
 
