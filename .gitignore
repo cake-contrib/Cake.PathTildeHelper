@@ -2,7 +2,7 @@
 
 ### Cake ###
 .cake/
-/artifacts/*
+/artifact/*
 tools/*
 !tools/packages.config
 
