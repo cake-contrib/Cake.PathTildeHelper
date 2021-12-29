@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.PathTildeHelper", "Cake.PathTildeHelper\Cake.PathTildeHelper.csproj", "{0CCA7B1A-4D9D-4CCC-A65A-9FBE2968C09D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.PathTildeHelper", "Cake.PathTildeHelper\Cake.PathTildeHelper.csproj", "{0CCA7B1A-4D9D-4CCC-A65A-9FBE2968C09D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.PathTildeHelper.Tests", "Cake.PathTildeHelper.Tests\Cake.PathTildeHelper.Tests.csproj", "{86B38475-27ED-4CE7-BEA2-469E9AB096B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.PathTildeHelper.Tests", "Cake.PathTildeHelper.Tests\Cake.PathTildeHelper.Tests.csproj", "{86B38475-27ED-4CE7-BEA2-469E9AB096B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4E9F3375-6438-4C07-A51F-4DD6CD4D5210}"
 	ProjectSection(SolutionItems) = preProject
